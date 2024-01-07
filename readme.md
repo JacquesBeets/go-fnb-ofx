@@ -15,7 +15,7 @@ Before running the application, make sure you have the following installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/fnb-ofx-downloader.git
+   git clone https://github.com/JacquesBeets/go-fnb-ofx.git
    cd fnb-ofx-downloader
    ```
 
@@ -55,5 +55,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 - [ofxgo](https://github.com/aclindsa/ofxgo) - Go library for parsing OFX files.
 - [playwright-go](https://github.com/mxschmitt/playwright-go) - Go bindings for Playwright.
-
-Feel free to modify this README to better suit your project's needs. Add more sections, elaborate on specific functionalities, or provide usage examples.
