@@ -188,6 +188,7 @@ func main() {
 
 	// Create New Page
 	page, err := browser.NewPage()
+	assertErrorToNilf("could not create page: %w", err)
 
 	// Create New Page with Video Recording
 	// page, err := browser.NewPage(playwright.BrowserNewPageOptions{
@@ -195,14 +196,14 @@ func main() {
 	// 		Dir: "videos/",
 	// 	},
 	// })
-	assertErrorToNilf("could not create page: %w", err)
+	// assertErrorToNilf("could not create page: %w", err)
+	// _, err = page.Video().Path()
+	// assertErrorToNilf("failed to get video path: %v", err)
+
 
 	// Goto Website
 	_, err = page.Goto(website)
 	assertErrorToNilf("could not goto: %w", err)
-
-	_, err = page.Video().Path()
-	assertErrorToNilf("failed to get video path: %v", err)
 
 
 	// Fill in Username
@@ -225,22 +226,22 @@ func main() {
 	time.Sleep(5 * time.Second) // Wait for 5 seconds
 
 	// Click on Accounts
-	assertErrorToNilf("could not click: %v", page.Locator("#shortCutLinks > span:nth-child(1)").Click())
+	assertErrorToNilf("could not Click on Accounts: %v", page.Locator("#shortCutLinks > span:nth-child(1)").Click())
 
 	time.Sleep(3 * time.Second) // Wait for 3 seconds
 
 	// Click on Balance
-	assertErrorToNilf("could not click: %v", page.Locator("#tabelRow_6 .group3 .col4 a").Click())
+	assertErrorToNilf("could not Click on Balance: %v", page.Locator("#tabelRow_6 .group3 .col4 a").Click())
 
 	time.Sleep(3 * time.Second) // Wait for 3 seconds
 
 	// Click More
-	assertErrorToNilf("could not click: %v", page.Locator("#footerButtonsContainer > div:nth-child(1) a").Click())
+	assertErrorToNilf("could not Click More: %v", page.Locator("#footerButtonsContainer > div:nth-child(1) a").Click())
 
 	time.Sleep(3 * time.Second) // Wait for 3 seconds
 
 	// Click on Download
-	assertErrorToNilf("could not click: %v", page.Locator("#tableActionButtons .downloadButton").Click())
+	assertErrorToNilf("could not Click on Download Button: %v", page.Locator("#tableActionButtons .downloadButton").Click())
 
 	time.Sleep(3 * time.Second) // Wait for 3 seconds
 
@@ -260,7 +261,7 @@ func main() {
 	download, err := page.ExpectDownload(func() error {
 		return page.Locator("#eziPannelButtonsWrapper #mainDownloadBtn").Click()
 	})
-	assertErrorToNilf("could not download: %w", err)
+	assertErrorToNilf("could not download file:  %w", err)
 
 	// Save download to file
 	err = download.SaveAs("./downloads/fnb_ofx.zip") // Save to current directory
