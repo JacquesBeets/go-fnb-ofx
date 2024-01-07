@@ -1,4 +1,3 @@
-```markdown
 # OFX Downloader
 
 This Go application automates the process of logging into the website, downloading account statements in OFX format, and parsing the OFX file for transaction details.
@@ -42,9 +41,9 @@ Before running the application, make sure you have the following installed:
 
 Run the application:
 
-```bash
-go run main.go
-```
+    ```bash
+    go run main.go
+    ```
 
 The application will automate the process of logging in, downloading the OFX file, parsing it, and cleaning up the temporary files.
 
@@ -58,4 +57,3 @@ This project is licensed under the [MIT License](LICENSE).
 - [playwright-go](https://github.com/mxschmitt/playwright-go) - Go bindings for Playwright.
 
 Feel free to modify this README to better suit your project's needs. Add more sections, elaborate on specific functionalities, or provide usage examples.
-```
