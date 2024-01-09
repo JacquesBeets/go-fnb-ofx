@@ -79,6 +79,22 @@ func (s *MySqlDB) createTransactionTable() error {
 }
 
 func (s *MySqlDB) AddNewTransaction(transaction *Transaction) error {
+
+	// Check if the transaction already exists
+	existsQuery := `select count(*) from transactions where transaction_id = ?`
+	var count int
+	err := s.Db.QueryRow(existsQuery, transaction.TransactionID).Scan(&count)
+	if err != nil {
+		return err
+	}
+
+	if count > 0 {
+		// Transaction already exists, do not add it
+		log.Println("Transaction already exists")
+		return nil
+	}
+
+	// Add new transaction
 	query := `insert into transactions (
 		transaction_type,
 		transaction_date,
@@ -91,7 +107,7 @@ func (s *MySqlDB) AddNewTransaction(transaction *Transaction) error {
 		bank_name
 	) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
-	_, err := s.Db.Exec(
+	_, err = s.Db.Exec(
 		query,
 		transaction.TransactionType,
 		transaction.TransactionDate,
