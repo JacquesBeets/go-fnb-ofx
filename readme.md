@@ -30,11 +30,18 @@ Before running the application, make sure you have the following installed:
    Create a `.env` file in the project root and add the following:
 
    ```dotenv
-    USERN=your_username
-    PASSWORD=your_password
-    WEBSITE=your_website
-    WEBSITE_LOGIN_WAIT=your_website_login_wait
-    WEBSITE_LOGOUT_WAIT=your_website_login_wait
+      USERN=your_username
+      PASSWORD=your_password
+      WEBSITE=your_website
+      WEBSITE_LOGIN_WAIT=your_website_login_wait
+      WEBSITE_LOGOUT_WAIT=your_website_login_wait
+
+      DB_CONNECTION=mysql
+      DB_HOST=localhost
+      DB_PORT=your_db_port
+      DB_DATABASE=database_name
+      DB_USERNAME=db_username
+      DB_PASSWORD=db_password
    ```
 
 ## Usage
@@ -42,8 +49,12 @@ Before running the application, make sure you have the following installed:
 Run the application:
 
     ```bash
-    go run main.go
+      go run main.go
     ```
+
+   ```bash
+      go run *.go
+   ```
 
 The application will automate the process of logging in, downloading the OFX file, parsing it, and cleaning up the temporary files.
 
